@@ -33,7 +33,7 @@ mod LizInventory {
     }
 
 
-    #[external(v0)]
+    #[abi(embed_v0)]
     impl LizInventoryImpl of super::ILizInventory<ContractState> {
         fn add_stock(ref self: ContractState, product: felt252, new_stock: u32) {
             // TODO:
@@ -117,7 +117,7 @@ mod test {
     fn test_stock_purchase() {
         let owner = util_felt_addr('Elizabeth');
         let dispatcher = deploy_contract();
-        let result = dispatcher.get_owner();
+        let _result = dispatcher.get_owner();
         // Call contract as owner
         starknet::testing::set_contract_address(owner);
 
