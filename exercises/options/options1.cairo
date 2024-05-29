@@ -1,9 +1,3 @@
-// options1.cairo
-// Execute `starklings hint options1` or use the `hint` watch subcommand for a hint.
-
-
-use option::OptionTrait;
-
 // This function returns how much icecream there is left in the fridge.
 // If it's before 10PM, there's 5 pieces left. At 10PM, someone eats them
 // all, so there'll be no more left :(
@@ -34,6 +28,6 @@ fn check_icecream() {
 #[test]
 fn raw_value() {
     // TODO: Fix this test. How do you get at the value contained in the Option?
-    let icecreams = maybe_icecream(12_usize);
-    assert(icecreams.unwrap() == 5_usize, 'err_6');
+    let icecreams = maybe_icecream(12).unwrap();
+    assert(icecreams == 5, 'err_6'); // don't change this line
 }
