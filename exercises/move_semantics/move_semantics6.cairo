@@ -26,5 +26,4 @@ fn get_value(number: @Number) -> u32 {
 fn set_value(ref number: Number) {
     let value = 2222222;
     number = Number { value };
-    number.value.print();
 }
