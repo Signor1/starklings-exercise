@@ -1,18 +1,11 @@
-// move_semantics2.cairo
-// Make me compile without changing line 16 or moving line 13!
-// Execute `starklings hint move_semantics2` or use the `hint` watch subcommand for a hint.
-
-use array::ArrayTrait;
-use debug::PrintTrait;
-
-
 fn main() {
-    let arr0 = ArrayTrait::new();
+    let mut arr0 = ArrayTrait::new();
+    let mut arrNew = ArrayTrait::new();
 
-    let mut arr1 = fill_arr(arr0.clone());
+    let mut _arr1 = fill_arr(arrNew);
 
     // Do not change the following line!
-    arr0.print();
+    print(arr0.span());
 }
 
 fn fill_arr(arr: Array<felt252>) -> Array<felt252> {
@@ -23,4 +16,22 @@ fn fill_arr(arr: Array<felt252>) -> Array<felt252> {
     arr.append(66);
 
     arr
+}
+
+fn print(span: Span<felt252>) { 
+    let mut i = 0;
+    print!("ARRAY: {{ len: {}, values: [ ", span.len());
+    loop {
+        if span.len() == i {
+            break;
+        }
+        let value = *(span.at(i));
+        if span.len() - 1 != i {
+            print!("{}, ", value);
+        } else {
+            print!("{}", value);
+        }
+        i += 1;
+    };
+    println!(" ] }}");
 }
